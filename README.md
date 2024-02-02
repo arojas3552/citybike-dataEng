@@ -20,5 +20,8 @@ BigQuery
 - BigQuery SQL Queries clean and transform data.
 - Data is migrated to Tableau for visualizations.
 
+### CI/CD
+Github Actions
+
 ### More
 Synk is used to scan the repository for vulnerabilities in the Python packages.
