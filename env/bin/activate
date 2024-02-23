@@ -44,6 +44,7 @@ export PATH
 
 export RAP_KEY="e57256ad3bmsh961d5d4759787c2p19b799jsn7db5a12f3bdf"
 
+export GOOGLE_APPLICATION_CREDENTIALS="/Users/almarojas/Desktop/Documents/Projects/DataEngineering/citybike-dataEng/local/city-bikes11-key.json"
 
 # unset PYTHONHOME if set
 # this will fail if PYTHONHOME is set to the empty string (which is bad anyway)

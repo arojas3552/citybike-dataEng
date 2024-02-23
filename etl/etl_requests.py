@@ -7,13 +7,17 @@ import pandas_gbq
 from datetime import datetime,timezone
 from sqlalchemy.types import DECIMAL, String
 from typing import Dict
+from google.oauth2 import service_account
 
-import google.auth
-from google.cloud import bigquery
-
-#PROJECT_ID = "city-bikes11"
-#os.environ["GCLOUD_PROJECT"] = PROJECT_ID
-#credentials, project_id = google.auth.default()
+service_key = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+print(service_key,'SERVICE KEY\t\t\t\t')
+credentials = service_account.Credentials.from_service_account_file('/Users/almarojas/Desktop/Documents/Projects/DataEngineering/citybike-dataEng/local/city-bikes11-key.json',)
+credentials = credentials.with_scopes(
+     [
+        'https://www.googleapis.com/auth/drive',
+        'https://www.googleapis.com/auth/cloud-platform',
+    ],
+)
 
 def call_api()->str:
     url = "https://rapidapi.com/eskerda/api/citybikes"
@@ -38,7 +42,7 @@ def call_api()->str:
     #return response.json()["response"][0]
     
 
-def create_df(jstruct)-> DataFrame:
+def create_df(jstruct)-> str:
     current_date = datetime.now(timezone.utc)
 
     df = pd.json_normalize(jstruct,"networks") #convert to df
@@ -47,7 +51,9 @@ def create_df(jstruct)-> DataFrame:
     df= df.assign(uploadTime = current_date)
     print(df.columns)
 
-    return df
+    call_big_query(df)
+
+    return 0
 
 # todo: implement later!
 def define_table_schema() -> Dict[str,type]:
@@ -63,14 +69,14 @@ def define_table_schema() -> Dict[str,type]:
      
 	return schema_definition
 
-def call_big_query(dataframe: DataFrame, schema_definition: Dict[str,type])-> None:
-    bike_df.to_gbq(
-         destination_table="cb11.data",
-         if_exists="replace",
-         table_schema=schema_def,
+def call_big_query(df: DataFrame)-> None:
+    pandas_gbq.to_gbq(
+         df,
+         'bike_dataset.stations',
+         project_id='city-bikes11',
+         if_exists="append",
+         credentials=credentials,
     )
-
-    print("1")
 
 #if __name__ != "__main__":
 call_api()
