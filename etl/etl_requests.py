@@ -49,34 +49,48 @@ def create_df(jstruct)-> str:
     #print(df.columns)
 
     df= df.assign(uploadTime = current_date)
-    print(df.columns)
+
+    df = df.rename(columns={"location.city":"location_city","location.country":"location_country","location.latitude":"location_lat","location.longitude":"location_long","license.name":"license_name","license.url":"license_url"})
+    print(df.dtypes)
 
     call_big_query(df)
 
     return 0
 
-# todo: implement later!
-def define_table_schema() -> Dict[str,type]:
-	schema_definition = {
-		"Company":String(64),
-		"Href":String(64),
-		"id": DECIMAL(8, 6),
-        "Name": DECIMAL(8, 6),
-		"City":String(64),
-		"Country":String(64),
-		"Source":String(64)
-    }
+def define_table_schema() -> list[dict[str, str]]:
+	schema_definition = [
+		{'name': 'company', 'type': 'STRING'},
+		{'name': 'href', 'type': 'STRING'},
+		{'name': 'id', 'type': 'STRING'},
+        {'name': 'name', 'type': 'STRING'},
+		{'name': 'location_city', 'type': 'STRING'},
+		{'name': 'location_country', 'type': 'STRING'},
+		{'name': 'location.lat', 'type': 'FLOAT'},
+        {'name': 'location_long', 'type': 'FLOAT'},
+		{'name': 'source', 'type': 'STRING'},
+		{'name': 'gbfs_href', 'type': 'STRING'},
+        {'name': 'license_name', 'type': 'STRING'},
+		{'name': 'license_url', 'type': 'STRING'},
+		{'name': 'ebikes', 'type': 'INTEGER'},
+		{'name': 'uploadTime', 'type': 'TIMESTAMP'},
+    ]
      
 	return schema_definition
 
 def call_big_query(df: DataFrame)-> None:
+   
+    df = df.astype(str)
+
     pandas_gbq.to_gbq(
          df,
          'bike_dataset.stations',
          project_id='city-bikes11',
          if_exists="append",
          credentials=credentials,
+         table_schema=define_table_schema(),
     )
+
+    print("Successfully sent to Big Query!")
 
 #if __name__ != "__main__":
 call_api()
