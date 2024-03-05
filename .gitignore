@@ -1,3 +1,4 @@
 local/*
 local
-streamlit/secrets.toml
+.streamlit
+.streamlit/secrets.toml
