@@ -65,14 +65,14 @@ def define_table_schema() -> list[dict[str, str]]:
         {'name': 'name', 'type': 'STRING'},
 		{'name': 'location_city', 'type': 'STRING'},
 		{'name': 'location_country', 'type': 'STRING'},
-		{'name': 'location.lat', 'type': 'FLOAT'},
-        {'name': 'location_long', 'type': 'FLOAT'},
+		{'name': 'location_lat', 'type': 'FLOAT64'},
+        {'name': 'location_long', 'type': 'FLOAT64'},
 		{'name': 'source', 'type': 'STRING'},
 		{'name': 'gbfs_href', 'type': 'STRING'},
         {'name': 'license_name', 'type': 'STRING'},
 		{'name': 'license_url', 'type': 'STRING'},
-		{'name': 'ebikes', 'type': 'INTEGER'},
-		{'name': 'uploadTime', 'type': 'TIMESTAMP'},
+		{'name': 'ebikes', 'type': 'INT64'},
+		{'name': 'uploadTime', 'type': 'DATETIME'},
     ]
      
 	return schema_definition
@@ -85,9 +85,9 @@ def call_big_query(df: DataFrame)-> None:
          df,
          'bike_dataset.stations',
          project_id='city-bikes11',
-         if_exists="append",
+         if_exists="replace",
          credentials=credentials,
-         table_schema=define_table_schema(),
+
     )
 
     print("Successfully sent to Big Query!")
