@@ -21,8 +21,7 @@ BigQuery
 - Data is migrated for visualizations on Streamlit.
 
 ### CI/CD
-Github Actions
-WIP
+Github Actions --WIP
 
 ### More
 Synk is used to scan the repository for vulnerabilities in the Python packages.
