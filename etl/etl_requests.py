@@ -9,6 +9,7 @@ from sqlalchemy.types import DECIMAL, String
 from typing import Dict
 from google.oauth2 import service_account
 
+
 service_key = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 print(service_key,'SERVICE KEY\t\t\t\t')
 credentials = service_account.Credentials.from_service_account_file('/Users/almarojas/Desktop/Documents/Projects/DataEngineering/citybike-dataEng/local/city-bikes11-key.json',)
@@ -94,3 +95,4 @@ def call_big_query(df: DataFrame)-> None:
 
 #if __name__ != "__main__":
 call_api()
+
