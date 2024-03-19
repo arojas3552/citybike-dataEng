@@ -3,3 +3,5 @@ local
 .streamlit
 .streamlit/secrets.toml
 *~
+env/*
+.env/*
