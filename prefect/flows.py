@@ -1,4 +1,4 @@
-from prefect import flow
+from prefect import flow,task
 
 
 @flow(log_prints=True)
@@ -8,9 +8,11 @@ def hello_world(name: str = "world", goodbye: bool = False):
     if goodbye:
         print(f"Goodbye {name}!")
 
+@task
+def task_imports():
+    from etl.etl_requests import call_api
 
-if __name__ == "__main__":
-    hello_world.serve(name="my-first-deployment",
-                      tags=["onboarding"],
-                      parameters={"goodbye": True},
-                      interval=60)
+@flow(log_prints=True)
+def api_call():
+    print("Calling ETL")
+    a = task_imports()
