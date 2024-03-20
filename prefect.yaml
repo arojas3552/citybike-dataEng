@@ -1,0 +1,50 @@
+# Welcome to your prefect.yaml file! You can use this file for storing and managing
+# configuration for deploying your flows. We recommend committing this file to source
+# control along with your flow code.
+
+# Generic metadata about this project
+name: citybike-dataEng
+prefect-version: 2.16.4
+
+# build section allows you to manage and build docker images
+build:
+
+# push section allows you to manage if and how this project is uploaded to remote locations
+push:
+
+# pull section allows you to provide instructions for cloning this project in remote locations
+pull:
+- prefect.deployments.steps.git_clone:
+    repository: https://github.com/arojas3552/citybike-dataEng.git
+    branch: main
+    access_token:
+
+# the deployments section allows you to provide configuration for deploying flows
+deployments:
+- name:
+  version:
+  tags: []
+  description:
+  schedule: {}
+  flow_name:
+  entrypoint:
+  parameters: {}
+  work_pool:
+    name:
+    work_queue_name:
+    job_variables: {}
+- name: bike_deployment
+  version:
+  tags: []
+  description:
+  entrypoint: prefect/flows.py:api_call
+  parameters: {}
+  work_pool:
+    name: my-process-pool
+    work_queue_name:
+    job_variables: {}
+  schedules:
+  - interval: 300.0
+    anchor_date: '2024-03-20T16:26:07.147197+00:00'
+    timezone: UTC
+    active: true

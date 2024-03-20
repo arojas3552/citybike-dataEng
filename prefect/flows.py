@@ -16,3 +16,10 @@ def task_imports():
 def api_call():
     print("Calling ETL")
     a = task_imports()
+
+if __name__ == "__main__":
+    # creates a deployment and stays running to monitor for work instructions generated on the server
+
+    api_call.serve(name="my-first-deployment",
+                      tags=["onboarding"],
+                      interval=60)
