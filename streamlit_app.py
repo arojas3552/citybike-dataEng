@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 
-from google.oauth2 import service_account
+import google.auth
 from google.cloud import bigquery
 
 st.set_page_config(page_title="Streamlit: City Bikes", layout="wide")
@@ -11,7 +11,7 @@ st.write("""
 Interactive world map*
 """)
 
-credentials = service_account.Credentials.from_service_account_file('/Users/almarojas/Desktop/Documents/Projects/DataEngineering/citybike-dataEng/local/city-bikes11-key.json',)
+credentials, project_id = google.auth.default()
 client = bigquery.Client(credentials=credentials)
 
 @st.cache_data(ttl=600)
