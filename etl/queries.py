@@ -1,11 +1,11 @@
 # bigquery sql code that transforms and updates data housed on bq
 #scheduled to run after data send in 
 
-from google.oauth2 import service_account
+import google.auth
 from google.cloud import bigquery
 import pandas as pd
 
-credentials = service_account.Credentials.from_service_account_file('/Users/almarojas/Desktop/Documents/Projects/DataEngineering/citybike-dataEng/local/city-bikes11-key.json',)
+credentials, project_id = google.auth.default()
 client = bigquery.Client(credentials=credentials)
 
 def query_call():

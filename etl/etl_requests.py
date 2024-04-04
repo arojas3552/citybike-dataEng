@@ -1,5 +1,5 @@
-import os
 import json
+import google.auth
 import requests # type: ignore
 import pandas as pd
 from pandas import DataFrame
@@ -7,24 +7,20 @@ import pandas_gbq
 from datetime import datetime,timezone
 from sqlalchemy.types import DECIMAL, String
 from typing import Dict
-from google.oauth2 import service_account
-from prefect import flow,task
+from google.cloud import secretmanager
 
+credentials, project_id = google.auth.default()
 
-service_key = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-print(service_key,'SERVICE KEY\t\t\t\t')
-credentials = service_account.Credentials.from_service_account_file('/Users/almarojas/Desktop/Documents/Projects/DataEngineering/citybike-dataEng/local/city-bikes11-key.json',)
-credentials = credentials.with_scopes(
-     [
-        'https://www.googleapis.com/auth/drive',
-        'https://www.googleapis.com/auth/cloud-platform',
-    ],
-)
+def get_api_key():
+    client = secretmanager.SecretManagerServiceClient()
+    name = f"projects/{project_id}/secrets/rapidapi-key/versions/1"
+    response = client.access_secret_version(request={"name": name})
+    return response.payload.data.decode("UTF-8")
 
 def call_api()->str:
     url = "https://rapidapi.com/eskerda/api/citybikes"
     querystring = {"system":"valenbisi"}
-    api_key = os.getenv('RAP_KEY')
+    api_key = get_api_key()
     headers = {
         "X-RapidAPI-Key": api_key,
         "X-RapidAPI-Host": "community-citybikes.p.rapidapi.com"
