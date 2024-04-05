@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 from google.cloud import bigquery
-from google.oauth2 import service_account
+import google.auth
+
+credentials, project_id = google.auth.default()
 
 st.set_page_config(page_title="Streamlit: City Bikes", layout="wide")
 st.write("""
@@ -9,11 +11,8 @@ st.write("""
 Interactive world map*
 """)
 
-credentials=service_account.Credentials.from_service_account_info(
-        filename=st.secrets["gcp_service_account"],
-        scopes=["https://www.googleapis.com/auth/cloud-platform", "https://www.googleapis.com/auth/bigquery"],
-    )
 client = bigquery.Client(credentials=credentials)
+
 
 @st.cache_data(ttl=600)
 def run_query(query):
