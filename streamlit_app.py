@@ -1,18 +1,20 @@
 import streamlit as st
-import pandas as pd
+import os
 from google.cloud import bigquery
 import google.auth
+from google.oauth2 import service_account
 
-credentials, project_id = google.auth.default()
+key_path = st.secrets["google_key_path"]
+credentials = service_account.Credentials.from_service_account_file(
+        key_path,
+        scopes=["https://www.googleapis.com/auth/bigquery"])
+client = bigquery.Client(credentials=credentials)
 
 st.set_page_config(page_title="Streamlit: City Bikes", layout="wide")
 st.write("""
 # City Bikes
 Interactive world map*
 """)
-
-client = bigquery.Client(credentials=credentials)
-
 
 @st.cache_data(ttl=600)
 def run_query(query):
@@ -23,7 +25,6 @@ def run_query(query):
     return rows
 
 latlong = run_query("SELECT longitude, latitude FROM `city-bikes11.bike_dataset.stations_stage`")
-
 
 st.map(latlong,zoom=1,use_container_width=True)
 
