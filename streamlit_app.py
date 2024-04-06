@@ -3,10 +3,9 @@ import os
 from google.cloud import bigquery
 import google.auth
 from google.oauth2 import service_account
-
-key_path = st.secrets["google_key_path"]
-credentials = service_account.Credentials.from_service_account_file(
-        key_path,
+ 
+credentials = service_account.Credentials.from_service_account_info(
+        st.secrets["gcp_service_account"],
         scopes=["https://www.googleapis.com/auth/bigquery"])
 client = bigquery.Client(credentials=credentials)
 
