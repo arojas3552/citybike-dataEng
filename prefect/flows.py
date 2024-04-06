@@ -28,7 +28,5 @@ def api_call():
     
     return True
 
-
-
-#if __name__ == "__main__":
-#    api_call.serve(name="bike_deploy",interval = 300)
+if __name__ == "__main__":
+    api_call.serve(name="bike_deploy",interval = 300)
