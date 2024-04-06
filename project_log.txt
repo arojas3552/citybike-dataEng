@@ -1,0 +1,12 @@
+Future:
+- Improve interactive map face
+- Prefect scheduling was paused for debugging. Set that back up again! And show updated time on app.
+- Implement CI/CD Github Actions.
+- Explore Docker Images
+
+April 5,2024
+- Fixed Streamlit bug and security risks
+-- App would work locally but wouldn't deploy. Showed Google Cloud IAM permission errors and couldn't locate account. Service Keys for authenticating cloud project were 
+stored in streamlit secrets and that fixed the issue.
+
+Beginning of log.
