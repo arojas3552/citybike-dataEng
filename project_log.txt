@@ -1,8 +1,11 @@
 Future:
-- Improve interactive map face
 - Prefect scheduling was paused for debugging. Set that back up again! And show updated time on app.
 - Implement CI/CD Github Actions.
 - Explore Docker Images
+
+April 6,2024
+- Improved map face by implementing MapBox by Plotly. 
+-- Map points on hover show bike details such as name, company, city and country. 
 
 April 5,2024
 - Fixed Streamlit bug and security risks
