@@ -28,11 +28,11 @@ deployments:
   entrypoint: prefect/flows.py:api_call
   parameters: {}
   work_pool:
-    name: my-process-pool
+    name: 
     work_queue_name:
     job_variables: {}
   schedules:
   - interval: 300.0
-    anchor_date: '2024-03-20T16:26:07.147197+00:00'
-    timezone: UTC
+    anchor_date:
+    timezone: America / New York
     active: true
