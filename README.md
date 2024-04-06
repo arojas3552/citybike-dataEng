@@ -8,9 +8,7 @@ It focuses on developing data pipelines that extract, transform, and load data i
 
 In this product, live worldwide city bike data is displayed on an interactive map with city bike details such as location, company, and city bike name.
 
-The viewable product on Streamlit is currently being tested for data leaks. Here is a screenshot on local host of the application: 
-<img width="1388" alt="Screenshot 2024-03-26 at 12 47 27 PM" src="https://github.com/arojas3552/citybike-dataEng/assets/54590853/63f79d1d-4a1e-4436-9b27-36b5f7792fba">
-
+[Click this link to view the app](https://citybike-data-engine.streamlit.app/)
 #### Tools:
 Prefect | 
 Streamlit
