@@ -1,9 +1,8 @@
 # bigquery sql code that transforms and updates data housed on bq
 #scheduled to run after data send in 
-'''
+
 import google.auth
 from google.cloud import bigquery
-import pandas as pd
 
 credentials, project_id = google.auth.default()
 client = bigquery.Client(credentials=credentials)
@@ -24,5 +23,5 @@ def query_call():
   """
   query_job = client.query(QUERY)  # API request
   rows = query_job.result()  # Waits for query to finish
+
   print("QUERY JOB COMPLETE")
-'''
