@@ -5,7 +5,6 @@ import pandas as pd
 from pandas import DataFrame
 import pandas_gbq
 from datetime import datetime,timezone
-from sqlalchemy.types import DECIMAL, String
 from typing import Dict
 from google.cloud import secretmanager
 
@@ -55,39 +54,16 @@ def create_df(jstruct)-> str:
 
     return 0
 
-def define_table_schema() -> list[dict[str, str]]:
-	schema_definition = [
-		{'name': 'company', 'type': 'STRING'},
-		{'name': 'href', 'type': 'STRING'},
-		{'name': 'id', 'type': 'STRING'},
-        {'name': 'name', 'type': 'STRING'},
-		{'name': 'location_city', 'type': 'STRING'},
-		{'name': 'location_country', 'type': 'STRING'},
-		{'name': 'location_lat', 'type': 'FLOAT64'},
-        {'name': 'location_long', 'type': 'FLOAT64'},
-		{'name': 'source', 'type': 'STRING'},
-		{'name': 'gbfs_href', 'type': 'STRING'},
-        {'name': 'license_name', 'type': 'STRING'},
-		{'name': 'license_url', 'type': 'STRING'},
-		{'name': 'ebikes', 'type': 'INT64'},
-		{'name': 'uploadTime', 'type': 'DATETIME'},
-    ]
-     
-	return schema_definition
-
 def call_big_query(df: DataFrame)-> None:
    
     df = df.astype(str)
-
     pandas_gbq.to_gbq(
          df,
          'bike_dataset.stations',
          project_id='city-bikes11',
          if_exists="replace",
          credentials=credentials,
-
     )
-
     print("Successfully sent to Big Query!")
 
 #if __name__ != "__main__":
