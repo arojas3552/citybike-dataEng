@@ -1,12 +1,13 @@
 Future:
-- Implement CI/CD Github Actions.
-- Explore Docker Images
+- Explore Docker Images and implement to Github Actions.
+- Draw from other APIs
 
 April 6,2024
 - Improved map face by implementing MapBox by Plotly. 
 -- Map points on hover show bike details such as name, company, city and country. 
 - Prefect Scheduling Up and Running for every 12 hours.
 - Show updated time on Streamlit. Implemented proper site restructuring.
+- Implemented CI/CD Github Actions for security: CodeQL
 
 April 5,2024
 - Fixed Streamlit bug and security risks
