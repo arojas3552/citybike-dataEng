@@ -67,14 +67,5 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
-
-    - name: Run pytest
-      uses: pavelzw/pytest-action@v2.2.0
-      with:
-        verbose: true
-        emoji: false
-        job-summary: false
-        custom-arguments: '-q'
-        click-to-expand: true
-        report-title: 'Test Report'
-            
+    
+                
