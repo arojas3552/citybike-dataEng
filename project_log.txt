@@ -4,6 +4,10 @@ Future:
 -- build docker image from streamlit app, push to artifact registry, deploy to cloud run
 - Draw from other APIs
 
+April 7,2024
+-Set up safety checks: streamlit tests and vulnurabilities
+- pytest for running these tests
+
 April 6,2024
 - Improved map face by implementing MapBox by Plotly. 
 -- Map points on hover show bike details such as name, company, city and country. 

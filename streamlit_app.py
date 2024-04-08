@@ -12,7 +12,7 @@ client = bigquery.Client(credentials=credentials)
 st.set_page_config(page_title="Streamlit: City Bikes", layout="wide")
 
 with st.container():
-    st.write("""# City Bikes Interactive World Map""")
+    st.title("""City Bikes Interactive World Map""")
 
     def get_suffix(day):
         if 10 < day % 100 < 20:
