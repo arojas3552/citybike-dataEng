@@ -9,7 +9,7 @@ credentials = service_account.Credentials.from_service_account_info(
         )
 client = bigquery.Client(credentials=credentials)
 
-st.set_page_config(page_title="Streamlit: City Bikes", layout="wide")
+st.set_page_config(page_title="City Bikes Interactive World Map", layout="wide")
 
 with st.container():
     st.title("""City Bikes Interactive World Map""")
