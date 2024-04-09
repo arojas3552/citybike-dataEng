@@ -6,4 +6,4 @@ at = AppTest.from_file("streamlit_app.py", default_timeout=1000)
 at.run()
 
 def test_title_area():
-  assert "City Bikes Interactive World Map" in at.title[0].value
+  assert "City Bikes Interactive World Map" in at.title.value
