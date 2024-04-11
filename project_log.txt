@@ -5,8 +5,11 @@ Future:
 -- build docker image from streamlit app, push to artifact registry, deploy to cloud run
 - Draw from other APIs
 
+April 10,2024
+- Created working docker image for streamlit app
+
 April 8,2024
-- github actions setup: tested different sucurity
+- github actions: pytest runs locally. delaying setting it up on Actions till new API is set up. CodeQL is implemented.
 - A big fork in the road: city bike data API was removed by creator. API still calls and returns, just no updated data.
 While I ignore this issue, in the meantime Ive decided to finish writing the CI/CD and docker image deployment for learning purposes. 
 I acknowloedge that the API will not be drawing new data. Ill replace it once I finish with the current goals!
