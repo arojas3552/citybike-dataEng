@@ -10,7 +10,7 @@ In this product, live worldwide city bike data is displayed on an interactive ma
 
 [Click this link to view the app](https://citybike-data-engine.streamlit.app/)
 
-Check out project log (project_log.txt) for older updates, current, and future updates. 
+Check out changelog for older, current, and future updates. 
 #### Tools:
 Prefect | 
 Streamlit
