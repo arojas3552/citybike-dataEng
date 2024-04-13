@@ -19,6 +19,8 @@ on:
     branches: [ "main" ]
   schedule:
     - cron: '15 12 * * 1'
+  workflow_dispatch:
+    
 
 env:
   GAR_LOCATION: us-east1
