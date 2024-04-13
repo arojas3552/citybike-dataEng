@@ -13,7 +13,9 @@ In this product, live worldwide city bike data is displayed on an interactive ma
 Check out changelog for older, current, and future updates. 
 #### Tools:
 Prefect | 
-Streamlit
+Streamlit | 
+Docker |
+Google Cloud
 
 ### Database:
 BigQuery
@@ -28,6 +30,7 @@ BigQuery
 ### CI/CD
 Github Actions
 CodeQL is used to scan the repository for vulnerabilities in the Python packages.
+Streamlit is deployed as a docker image to artifact registry where it is deployed to cloud run.
 
 ### More
 Future plans include drawing more data from different sources and styles, implementing docker images, more advanced CI/CD processes.
