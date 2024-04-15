@@ -45,7 +45,7 @@ USER appuser
 COPY . .
 
 # Expose the port that the application listens on.
-EXPOSE 8501
+EXPOSE 8080
 
 #The HEALTHCHECK instruction tells Docker how to test a container to check that it is still working. Your container needs to listen to Streamlit’s (default) port 8501:
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health

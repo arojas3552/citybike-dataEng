@@ -6,6 +6,7 @@ Future, goals, to/dos by priority:
 April 12,2024
 - Docker image pushes to artifact registry
 -- Added to Github Actions!
+- Building cloud run for continuous deployment
 
 April 10,2024
 - Created working docker image for streamlit app
