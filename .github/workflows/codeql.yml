@@ -214,7 +214,7 @@ jobs:
         id: 'deploy'
         uses: 'google-github-actions/deploy-cloudrun@v2.0.0'
         with: 
-          service: streamlit
+          service: ${{ secrets.SERVICE_ID }}
           image: "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ secrets.PROJECT_ID }}/${{ secrets.REGISTRY_REPO }}/streamlit:${{ env.VERSION_NUMBER }}"
           flags: "--service-account=${{ secrets.GOOGLE_CREDENTIALS }} --max-instances=3"
           no_traffic: false
