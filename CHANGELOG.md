@@ -1,6 +1,7 @@
 Future, goals, to/dos by priority:
-- 
+- Implement further security
 - Write pytest and rapidapi tests and run them in ci/cd
+- Change/fix API source
 - Draw from other APIs
 
 April 21, 2024
