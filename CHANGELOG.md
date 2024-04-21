@@ -1,7 +1,10 @@
 Future, goals, to/dos by priority:
-- deploy docker image to cloud run
--- Write pytest and rapidapi tests and run them in ci/cd
---- Draw from other APIs
+- 
+- Write pytest and rapidapi tests and run them in ci/cd
+- Draw from other APIs
+
+April 21, 2024
+- Cloud Run successfully deploys streamlit image from docker.
 
 April 12,2024
 - Docker image pushes to artifact registry
