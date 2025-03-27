@@ -42,7 +42,7 @@ graphviz==0.20.2
 greenlet==3.0.3
 griffe==0.42.0
 grpc-google-iam-v1==0.13.0
-grpcio==1.60.1
+grpcio==1.60.2
 grpcio-status==1.60.1
 h11==0.14.0
 h2==4.1.0
